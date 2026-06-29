@@ -1,29 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Header } from "@/components/site/Header";
+import { Hero } from "@/components/site/Hero";
+import { StatsStrip } from "@/components/site/StatsStrip";
+import type { Engine } from "@/components/site/engine-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Kaiyi X7 — Rasmiy diler O'zbekistonda | Kaiyi.uz" },
+      {
+        name: "description",
+        content:
+          "Kaiyi X7 benzin va gibrid (Kunpeng iHD). Test-drayv, kredit, bo'lib to'lash. 6 ta filial: Toshkent, Farg'ona, Jizzax, Xorazm.",
+      },
+      { property: "og:title", content: "Kaiyi X7 — Kaiyi.uz" },
+      {
+        property: "og:description",
+        content: "Benzin va gibrid kross-over. Rasmiy diler O'zbekistonda.",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [engine, setEngine] = useState<Engine>("gas");
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-[color:var(--obsidian)] text-[color:var(--pearl)]">
+      <Header />
+      <main>
+        <Hero engine={engine} onEngineChange={setEngine} />
+        <StatsStrip engine={engine} />
+      </main>
     </div>
   );
 }

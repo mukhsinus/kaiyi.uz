@@ -17,18 +17,14 @@ export function StatsStrip({ engine }: { engine: Engine }) {
   ];
 
   return (
-    <section className="border-t border-b border-[color:var(--border)] bg-[color:var(--graphite)]">
-      <div className="mx-auto max-w-[1400px] grid grid-cols-2 md:grid-cols-4">
+    <section className="border-y border-white/8 bg-[color:var(--graphite)]/70">
+      <div className="mx-auto max-w-[1440px] grid gap-px rounded-none md:grid-cols-4 md:gap-3 px-0 md:px-6 py-0 md:py-6">
         {items.map((it, i) => (
           <div
             key={it.label}
-            className={`px-6 md:px-10 py-10 md:py-14 ${
-              i < items.length - 1 ? "md:border-r border-[color:var(--border)]" : ""
-            } ${i < 2 ? "border-b md:border-b-0 border-[color:var(--border)]" : ""} ${
-              i % 2 === 0 ? "border-r md:border-r" : ""
-            }`}
+            className="panel-surface-soft px-6 md:px-8 py-9 md:py-10 md:rounded-[1.75rem]"
           >
-            <div className="text-[10px] tracking-[0.22em] uppercase text-[color:var(--steel)] mb-4">
+            <div className="text-[10px] tracking-[0.24em] uppercase text-[color:var(--steel)] mb-4">
               {it.label}
             </div>
             <div className="font-display font-black text-[color:var(--pearl)] text-4xl md:text-5xl tabular leading-none transition-all duration-500">

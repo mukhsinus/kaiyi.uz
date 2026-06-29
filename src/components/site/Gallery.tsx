@@ -17,9 +17,9 @@ const items = [
 export function Gallery() {
   const { lang } = useLang();
   return (
-    <section className="border-b border-[color:var(--border)] py-20 md:py-28">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-8">
-        <div className="flex items-center gap-3 text-[11px] tracking-[0.25em] text-[color:var(--steel)] mb-6">
+    <section className="border-b border-white/8 py-20 md:py-28">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-8">
+        <div className="section-kicker mb-6">
           <span className="h-px w-10 chrome-line" />
           {lang === "uz" ? "GALEREYA" : "ГАЛЕРЕЯ"}
         </div>
@@ -28,17 +28,22 @@ export function Gallery() {
         </h2>
       </div>
 
-      <div className="overflow-x-auto no-scrollbar pl-6 md:pl-8">
+      <div className="scrollbar-soft overflow-x-auto pb-3 pl-6 md:pl-8">
         <div className="flex gap-4 md:gap-6 pr-6 md:pr-8">
           {items.map((it, i) => (
             <figure
               key={i}
-              className="relative shrink-0 w-[78vw] sm:w-[440px] md:w-[520px] aspect-[4/3] bg-[color:var(--graphite)] overflow-hidden"
+              className="relative shrink-0 w-[78vw] sm:w-[440px] md:w-[520px] aspect-[4/3] overflow-hidden rounded-[28px] panel-surface"
               style={{ background: it.grad }}
               aria-label={`Kaiyi X7 — ${it.hint}`}
             >
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,10,11,0)_45%,rgba(9,10,11,0.72)_100%)]" />
+              <div className="absolute inset-x-4 top-4 flex items-center justify-between text-[10px] tracking-[0.2em] uppercase text-[color:var(--steel)]">
+                <span>Studio frame</span>
+                <span>{String(i + 1).padStart(2, "0")}</span>
+              </div>
               <div className="absolute inset-0 flex items-end p-5">
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[color:var(--steel)]">
+                <span className="text-[10px] tracking-[0.2em] uppercase text-[color:var(--pearl)]/80">
                   {/* visual hint only, remove when real images are wired */}
                   {it.hint}
                 </span>

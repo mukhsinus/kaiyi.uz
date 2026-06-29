@@ -14,7 +14,7 @@ export function PowertrainCompare({ onSelect }: { onSelect: (e: Engine) => void 
     const spec = engineSpecs[engine];
     const label = lang === "uz" ? (engine === "gas" ? "Benzin" : "Gibrid Kunpeng iHD") : engine === "gas" ? "Бензин" : "Гибрид Kunpeng iHD";
     return (
-      <div className="flex-1 px-6 md:px-12 py-12 md:py-20">
+      <div className="flex-1 panel-surface rounded-[28px] px-6 md:px-10 py-10 md:py-12">
         <div className="text-[10px] tracking-[0.25em] uppercase text-[color:var(--steel)] mb-3">
           {lang === "uz" ? "Versiya" : "Версия"}
         </div>
@@ -24,7 +24,7 @@ export function PowertrainCompare({ onSelect }: { onSelect: (e: Engine) => void 
 
         <dl className="space-y-7">
           {rows.map((r) => (
-            <div key={r.key} className="flex items-baseline justify-between gap-6 border-b border-[color:var(--border)] pb-4">
+            <div key={r.key} className="flex items-baseline justify-between gap-6 border-b border-white/10 pb-4">
               <dt className="text-xs tracking-wider uppercase text-[color:var(--steel)]">{t(r.key)}</dt>
               <dd className="font-display font-extrabold text-2xl md:text-3xl text-[color:var(--pearl)] tabular">
                 {engine === "gas" ? r.gas : r.hybrid}
@@ -53,9 +53,9 @@ export function PowertrainCompare({ onSelect }: { onSelect: (e: Engine) => void 
   };
 
   return (
-    <section className="border-b border-[color:var(--border)] bg-[color:var(--obsidian)]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-8 pt-20 md:pt-28 pb-8">
-        <div className="flex items-center gap-3 text-[11px] tracking-[0.25em] text-[color:var(--steel)] mb-6">
+    <section className="border-b border-white/8 bg-[color:var(--obsidian)]">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-8 pt-20 md:pt-28 pb-8">
+        <div className="section-kicker mb-6">
           <span className="h-px w-10 chrome-line" />
           {lang === "uz" ? "KUCH AGREGATI" : "СИЛОВОЙ АГРЕГАТ"}
         </div>
@@ -64,10 +64,12 @@ export function PowertrainCompare({ onSelect }: { onSelect: (e: Engine) => void 
         </h2>
       </div>
 
-      <div className="mx-auto max-w-[1400px] relative md:flex">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-8 pb-6 md:pb-10 grid gap-4 md:grid-cols-[1fr_auto_1fr]">
         {column("gas")}
-        <div aria-hidden className="hidden md:block w-px chrome-line my-12" />
-        <div aria-hidden className="md:hidden h-px chrome-line mx-12" />
+        <div aria-hidden className="hidden md:flex items-center justify-center">
+          <div className="h-full w-px chrome-line rounded-full" />
+        </div>
+        <div aria-hidden className="md:hidden h-px chrome-line mx-4" />
         {column("hybrid")}
       </div>
     </section>

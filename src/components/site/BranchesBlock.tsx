@@ -59,9 +59,9 @@ export function BranchesBlock() {
   const { lang } = useLang();
 
   return (
-    <section id="branches" className="border-b border-[color:var(--border)] py-20 md:py-28">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-8">
-        <div className="flex items-center gap-3 text-[11px] tracking-[0.25em] text-[color:var(--steel)] mb-6">
+    <section id="branches" className="border-b border-white/8 py-20 md:py-28">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-8">
+        <div className="section-kicker mb-6">
           <span className="h-px w-10 chrome-line" />
           {lang === "uz" ? "FILIALLAR" : "ФИЛИАЛЫ"}
         </div>
@@ -71,12 +71,12 @@ export function BranchesBlock() {
 
         <div className="grid md:grid-cols-12 gap-10">
           {/* Map placeholder */}
-          <div className="md:col-span-6">
+          <div className="md:col-span-6 panel-surface rounded-[28px] p-4 md:p-5">
             <div
-              className="relative aspect-[4/3] md:aspect-[5/6] border border-[color:var(--border)] overflow-hidden"
+              className="relative aspect-[4/3] md:aspect-[5/6] rounded-[22px] overflow-hidden"
               style={{
                 background:
-                  "radial-gradient(circle at 50% 45%, #1e2126 0%, #14161a 50%, #0E0F11 100%)",
+                  "radial-gradient(circle at 50% 45%, rgba(245,246,247,0.06) 0%, rgba(21,23,26,0.9) 50%, #090A0B 100%)",
               }}
               aria-label={lang === "uz" ? "Filiallar xaritasi" : "Карта филиалов"}
             >
@@ -84,7 +84,7 @@ export function BranchesBlock() {
               {branches.map((b, i) => (
                 <span
                   key={b.id}
-                  className="absolute w-2.5 h-2.5 bg-[color:var(--ember)]"
+                  className="absolute w-2.5 h-2.5 rounded-full bg-[color:var(--pearl)] shadow-[0_0_0_6px_rgba(245,246,247,0.06)]"
                   style={{
                     top: `${[42, 45, 38, 55, 50, 60][i]}%`,
                     left: `${[58, 60, 56, 70, 50, 28][i]}%`,
@@ -92,20 +92,21 @@ export function BranchesBlock() {
                   aria-label={b.name[lang]}
                 />
               ))}
-              <div className="absolute bottom-4 left-4 text-[10px] tracking-[0.22em] uppercase text-[color:var(--steel)]">
-                UZBEKISTAN
+              <div className="absolute inset-x-4 top-4 flex items-center justify-between text-[10px] tracking-[0.22em] uppercase text-[color:var(--steel)]">
+                <span>Uzbekistan network</span>
+                <span>6 branches</span>
               </div>
             </div>
           </div>
 
-          <ul className="md:col-span-6 divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
+          <ul className="md:col-span-6 divide-y divide-white/8 panel-surface rounded-[28px] overflow-hidden">
             {branches.map((b) => (
-              <li key={b.id} className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <li key={b.id} className="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <div className="font-display font-bold text-[color:var(--pearl)] text-lg flex items-center gap-2">
                     {b.name[lang]}
                     {b.headquarters && (
-                      <span className="text-[9px] tracking-[0.2em] uppercase text-[color:var(--ember)] border border-[color:var(--ember)] px-1.5 py-0.5">
+                      <span className="text-[9px] tracking-[0.2em] uppercase text-[color:var(--pearl)] border border-white/15 bg-white/5 px-1.5 py-0.5 rounded-full">
                         HQ
                       </span>
                     )}
@@ -115,7 +116,7 @@ export function BranchesBlock() {
                 </div>
                 <a
                   href={`tel:${b.phone.replace(/\s/g, "")}`}
-                  className="text-sm font-semibold text-[color:var(--pearl)] hover:text-[color:var(--ember)] tabular whitespace-nowrap transition-colors"
+                  className="text-sm font-semibold text-[color:var(--pearl)] hover:text-[color:var(--steel)] tabular whitespace-nowrap transition-colors"
                 >
                   {b.phone}
                 </a>

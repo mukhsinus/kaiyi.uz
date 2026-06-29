@@ -3,6 +3,12 @@ import { useState } from "react";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { StatsStrip } from "@/components/site/StatsStrip";
+import { PowertrainCompare } from "@/components/site/PowertrainCompare";
+import { Gallery } from "@/components/site/Gallery";
+import { FinanceBlock } from "@/components/site/FinanceBlock";
+import { BranchesBlock } from "@/components/site/BranchesBlock";
+import { CtaBand, Footer } from "@/components/site/Footer";
+import { MobileStickyBar } from "@/components/site/MobileStickyBar";
 import type { Engine } from "@/components/site/engine-data";
 
 export const Route = createFileRoute("/")({
@@ -30,10 +36,17 @@ function Index() {
   return (
     <div className="min-h-screen bg-[color:var(--obsidian)] text-[color:var(--pearl)]">
       <Header />
-      <main>
+      <main className="pb-16 md:pb-0">
         <Hero engine={engine} onEngineChange={setEngine} />
         <StatsStrip engine={engine} />
+        <PowertrainCompare onSelect={setEngine} />
+        <Gallery />
+        <FinanceBlock />
+        <BranchesBlock />
+        <CtaBand />
       </main>
+      <Footer />
+      <MobileStickyBar />
     </div>
   );
 }
